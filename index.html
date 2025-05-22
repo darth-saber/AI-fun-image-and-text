@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Text & Image Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="antialiased">
+    <div class="main-container">
+        <div class="container bg-white p-8 rounded-xl shadow-lg w-full md:w-1/2 border border-gray-200">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">AI Text Generator</h1>
+
+            <div class="mb-6">
+                <label for="promptInput" class="block text-gray-700 text-sm font-medium mb-2">Enter your text prompt:</label>
+                <textarea
+                    id="promptInput"
+                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y min-h-[120px] text-gray-800"
+                    placeholder="e.g., Write a short story about a cat who discovers a secret garden."
+                ></textarea>
+            </div>
+
+            <button
+                id="generateTextButton"
+                class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out flex items-center justify-center font-semibold shadow-md"
+            >
+                <span id="textButtonText">Generate Text</span>
+                <div id="textLoadingSpinner" class="spinner ml-3 hidden"></div>
+            </button>
+
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Generated Text:</h2>
+                <div
+                    id="outputTextArea"
+                    class="bg-gray-50 p-6 rounded-lg border border-gray-200 min-h-[150px] text-gray-700 leading-relaxed whitespace-pre-wrap break-words overflow-auto"
+                >
+                    Your AI-generated text will appear here.
+                </div>
+                <button
+                    id="copyButton"
+                    class="mt-4 w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition duration-300 ease-in-out font-semibold shadow-sm hidden"
+                >
+                    Copy to Clipboard
+                </button>
+                <div id="copyMessage" class="text-green-600 mt-2 text-center hidden"></div>
+                <div id="textErrorMessage" class="text-red-600 mt-4 hidden"></div>
+            </div>
+        </div>
+
+        <div class="container bg-white p-8 rounded-xl shadow-lg w-full md:w-1/2 border border-gray-200">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">AI Image Generator</h1>
+
+            <div class="mb-6">
+                <label for="imagePromptInput" class="block text-gray-700 text-sm font-medium mb-2">Enter your image prompt:</label>
+                <textarea
+                    id="imagePromptInput"
+                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y min-h-[120px] text-gray-800"
+                    placeholder="e.g., A futuristic city at sunset, cyberpunk style, with flying cars."
+                ></textarea>
+            </div>
+
+            <button
+                id="generateImageButton"
+                class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out flex items-center justify-center font-semibold shadow-md"
+            >
+                <span id="imageButtonText">Generate Image</span>
+                <div id="imageLoadingSpinner" class="spinner ml-3 hidden"></div>
+            </button>
+
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Generated Image:</h2>
+                <div id="imageOutputArea" class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex justify-center items-center min-h-[250px] overflow-hidden">
+                    <img id="generatedImage" src="" alt="Generated image will appear here" class="max-w-full max-h-[250px] object-contain rounded-md hidden" />
+                    <p id="imagePlaceholder" class="text-gray-500">Your AI-generated image will appear here.</p>
+                </div>
+                <button
+                    id="downloadImageButton"
+                    class="mt-4 w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition duration-300 ease-in-out font-semibold shadow-sm hidden"
+                >
+                    Download Image
+                </button>
+                <div id="imageErrorMessage" class="text-red-600 mt-4 hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
